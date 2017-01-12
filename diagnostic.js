@@ -32,7 +32,20 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
+const create = (name, description, startYear, endYear) => {
+
+  Movement.create({
+    name: name,
+    description: description,
+    startYear: startYear,
+    endYear:endYear
+  });
+  Movement.save().then(Movement =>{
+    console.log(Movement);
+  }).catch(err=> {
+    console.log(err);
+  });
+};
 // Success -> console.log new Movement as JSON
 // Failure -> Console.error
 
