@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost/mongoose-crud-diagnostic');
 
 const Movement = require('./models/movement.js');
 
-/// ADD YOUR CODE BELOW
+something could happen here
 
 const create = (name, description, startYear, endYear) => {};
 // Success -> console.log new Movement as JSON
