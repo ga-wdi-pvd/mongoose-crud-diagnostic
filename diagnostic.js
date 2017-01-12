@@ -37,20 +37,49 @@ const create = (name, description, startYear, endYear) => {};
 // Failure -> Console.error
 
 const index = () => {};
+  Movement.find({}, (err,restaurants) => {
+    console.log(movements);
+  });
+};
 // Success -> console.log all Movements as JSON
 // Failure -> Console.error
 
 const show = (id) => {};
+  Movement.findOne({name: req.name}, (err, movement) => {
+    console.log(movement);
+  });
+};
 // Success -> If the specified Movement exists, console.log it as JSON;
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
 
 const update = (id, field, value) => {};
+  Movement.findOneAndUpdate({name: req.name}, {name:update.name}, {new: true}, (err,movement)
+=> {
+  if(err) {
+    console.log(err)
+  }
+  else {
+    console.log(movement);
+  }
+ });
+};
+
 // Success -> If the specified Movement exists, update it and console.log the
 //              updated Movement as JSON; otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
 
 const destroy = (id) => {};
+  destroy(req){
+    Movement.findOneAnd Remove(req, (err, docs) => {
+      if (err){
+        console.log(err);
+      }
+      else {
+        console.log(docs);
+      }
+    });
+  };
 // Success -> If the specified Movement exists, destroy it and console.log 'removed';
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
