@@ -70,11 +70,8 @@ const show = (id) => {
   // Success -> If the specified Movement exists, console.log it as JSON;
   //              otherwise, console.log "Not Found" and exit.
   // Failure -> Console.error
+  Movement.findOne({id: id}).then(function(movements){///THis one I'm lost on!!!
 
-  Movement.findOne({id: id}).then(function(req, res){///THis one I'm lost on!!!
-    if (err){
-      console.log(err);
-    } else {
       console.log(movements: movements);//REALLY NOT SURE IF THIS WILL RETURN ALL
     }
   });
