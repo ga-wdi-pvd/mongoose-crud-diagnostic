@@ -32,25 +32,82 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
+const create = (name, description, startYear, endYear) => {
+
+  Movement.create({ name:name, description:description, startYear:startYear, endYear:endYear }).then(move => {
+    console.log(move);
+  }).catch(err => {
+    console.log(err);
+  });
+
+};
 // Success -> console.log new Movement as JSON
 // Failure -> Console.error
 
-const index = () => {};
+const index = () => {
+
+  // Movement.find({}, (err, move) => {
+  //   console.log(move);
+  // });
+
+  Movement.find({}).then(move => {
+    console.log(move);
+  }).catch(err => {
+    console.log(err);
+  });
+
+};
 // Success -> console.log all Movements as JSON
 // Failure -> Console.error
 
-const show = (id) => {};
+const show = (id) => {
+
+  if (Movement.findById(id).exists(true)) {
+    Movement.findById(id).then(move => {
+      console.log(move);
+    }).catch(err => {
+      console.log(err);
+    });
+  } else {
+    console.log('Not Found');
+  }
+
+};
 // Success -> If the specified Movement exists, console.log it as JSON;
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
 
-const update = (id, field, value) => {};
+const update = (id, field, value) => {
+
+  if (Movement.findById(id).exists(true)) {
+    Movement.findByIdAndUpdate(id,{field:value}).then(move => {
+      console.log(move);
+    }).catch(err => {
+      console.log(err);
+    });
+  } else {
+    console.log('Not Found');
+  }
+
+
+};
 // Success -> If the specified Movement exists, update it and console.log the
 //              updated Movement as JSON; otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
 
-const destroy = (id) => {};
+const destroy = (id) => {
+
+  if (Movement.findById(id).exists(true)) {
+    Movement.findByIdAndRemove(id).then(move => {
+      console.log(move);
+    }).catch(err => {
+      console.log(err);
+    });
+  } else {
+    console.log('Not Found');
+  }
+
+};
 // Success -> If the specified Movement exists, destroy it and console.log 'removed';
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
@@ -62,3 +119,15 @@ module.exports = {
   update,
   destroy
 };
+
+
+
+
+//
+// index();
+// create({'test','testdes',222,333});
+// index();
+//
+// restaurantsController.show({name:"Tom's Bar"});
+// restaurantsController.update({name: "Tom's Bar"}, {name: "Voldemort's"});
+// restaurantsController.destroy({name: "Voldemort's"});
