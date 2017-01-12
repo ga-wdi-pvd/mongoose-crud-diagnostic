@@ -32,18 +32,55 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
+const create = (name, description, startYear, endYear) => {
+  var name = new Movement({
+    name: name,
+    description: description,
+    startYear: startYear,
+    endYear: endYear
+  })
+  name.save((err, name) => {
+    if (err){///console.log new Movement as JSON
+      console.log(err); // Not sure this will log as JSON
+    } else {  // Failure -> Console.error
+      console.log(restaurants);
+    }
+  })
+};
+
+
 // Success -> console.log new Movement as JSON
 // Failure -> Console.error
 
-const index = () => {};
-// Success -> console.log all Movements as JSON
-// Failure -> Console.error
+const index = () => {
+  // Success -> console.log all Movements as JSON
+  // Failure -> Console.error
+  Movement.find({}).then(function(req, res){
 
-const show = (id) => {};
-// Success -> If the specified Movement exists, console.log it as JSON;
-//              otherwise, console.log "Not Found" and exit.
-// Failure -> Console.error
+    if (err){
+      console.log(err);
+    } else {
+      console.log(movements: movements);//REALLY NOT SURE IF THIS WILL RETURN ALL
+    }
+  });
+
+};
+
+const show = (id) => {
+  // Success -> If the specified Movement exists, console.log it as JSON;
+  //              otherwise, console.log "Not Found" and exit.
+  // Failure -> Console.error
+
+  Movement.findOne({id: id}).then(function(req, res){///THis one I'm lost on!!!
+    if (err){
+      console.log(err);
+    } else {
+      console.log(movements: movements);//REALLY NOT SURE IF THIS WILL RETURN ALL
+    }
+  });
+};
+
+
 
 const update = (id, field, value) => {};
 // Success -> If the specified Movement exists, update it and console.log the
