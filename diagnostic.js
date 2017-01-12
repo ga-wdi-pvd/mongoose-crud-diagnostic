@@ -9,7 +9,7 @@
 // a list of other related movements.
 
 // Your job is to build the piece of the system for doing CRUD on the different
-// art movements; the API for this part of the system must be standardized so
+// art movements; the API for this part of the system must be standardized
 // so that other parts of the application can use it.
 
 // Each Movement needs to have the following features:
@@ -30,7 +30,7 @@ mongoose.connect('mongodb://localhost/mongoose-crud-diagnostic');
 
 const Movement = require('./models/movement.js');
 
-/// ADD YOUR CODE BELOW
+/// ADD YOUR CODE BELOW ummm
 
 const create = (name, description, startYear, endYear) => {};
 // Success -> console.log new Movement as JSON
