@@ -32,9 +32,14 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
+const create = (name, description, startYear, endYear) => {
+  Movement.create({name, description, startYear, endYear})
+  .then(movement => console.log(movement.toJSON()))
+  .catch(console.error);
+};
 // Success -> console.log new Movement as JSON
 // Failure -> Console.error
+
 
 const index = () => {};
 // Success -> console.log all Movements as JSON
