@@ -32,15 +32,39 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
+const create = (name, description, startYear, endYear) => {
+  Movement.create({name, description, startYear, endYear}, (err, movement) => {
+    if(err){
+      console.log(err);
+    } else {
+      console.log(`${movement}`);
+    }
+  });
+};
 // Success -> console.log new Movement as JSON
 // Failure -> Console.error
 
-const index = () => {};
+const index = () => {
+  Movement.find({}, (err, movements) => {
+    if(err){
+      console.log(err);
+    } else {
+      console.log(`${movements}`);
+    }
+  });
+};
 // Success -> console.log all Movements as JSON
 // Failure -> Console.error
 
-const show = (id) => {};
+const show = (id) => {
+  Author.findOne({Movement.ObjectId: id}, (err, movement) => {
+    if(err){
+      console.log(err);
+    } else {
+      console.log(`${movement}`);
+    }
+  });
+};
 // Success -> If the specified Movement exists, console.log it as JSON;
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
