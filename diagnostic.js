@@ -32,7 +32,10 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
+const create = (name, description, startYear, endYear) => {
+	Movement.create()
+
+};
 // Success -> console.log new Movement as JSON
 // Failure -> Console.error
 
@@ -45,15 +48,38 @@ const show = (id) => {};
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
 
-const update = (id, field, value) => {};
+///////////////////////////////////
+const update = (id, field, value) => {
+   Movement.findOneAndUpdate({id: movement}, {id: update}, {field: update}, {new: true}, function(err, name){
+     if(err){
+       console.log("Not Found")
+     }
+     else{
+       console.log(Movement.find(name));
+     }
+   })
+};
 // Success -> If the specified Movement exists, update it and console.log the
 //              updated Movement as JSON; otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
+///////////////////////////////////
 
-const destroy = (id) => {};
+
+
+///////////////////////////////////
+const destroy = (id) => {
+  Movemnet.findOneAndRemove({id: movement}, function(err, it){
+    if(err){
+      console.log(err); }
+    else{ 
+      console.log('removed'); }
+}
+)
+};
 // Success -> If the specified Movement exists, destroy it and console.log 'removed';
 //              otherwise, console.log "Not Found" and exit.
 // Failure -> Console.error
+//////////////////////////////////
 
 module.exports = {
   create,
