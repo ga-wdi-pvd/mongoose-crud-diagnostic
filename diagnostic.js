@@ -32,28 +32,60 @@ const Movement = require('./models/movement.js');
 
 /// ADD YOUR CODE BELOW
 
-const create = (name, description, startYear, endYear) => {};
-// Success -> console.log new Movement as JSON
-// Failure -> Console.error
+const create = (name, description, startYear, endYear) => {
+  // Success -> console.log new Movement as JSON
+  // Failure -> Console.error
 
-const index = () => {};
-// Success -> console.log all Movements as JSON
-// Failure -> Console.error
+  Movement.create({name, description, startYear, endYear})
+    .then(movement => console.log(movement))
+    .catch(console.error);
+};
 
-const show = (id) => {};
-// Success -> If the specified Movement exists, console.log it as JSON;
-//              otherwise, console.log "Not Found" and exit.
-// Failure -> Console.error
+const index = () => {
+  // Success -> console.log all Movements as JSON
+  // Failure -> Console.error
 
-const update = (id, field, value) => {};
-// Success -> If the specified Movement exists, update it and console.log the
-//              updated Movement as JSON; otherwise, console.log "Not Found" and exit.
-// Failure -> Console.error
+  Movement.find()
+    .then(movements => {
+      movements.forEach((movement) => {
+        console.log(movement);
+      });
+    })
+    .catch(console.error);
+};
 
-const destroy = (id) => {};
-// Success -> If the specified Movement exists, destroy it and console.log 'removed';
-//              otherwise, console.log "Not Found" and exit.
-// Failure -> Console.error
+const show = (id) => {
+  // Success -> If the specified Movement exists, console.log it as JSON;
+  //              otherwise, console.log "Not Found" and exit.
+  // Failure -> Console.error
+  Movement.findById(id)
+    .then((movement) => {
+      movement === null ? console.log('Not Found') : console.log(movement)
+    })
+    .catch(console.error);
+};
+
+const update = (id, field, value) => {
+  // Success -> If the specified Movement exists, update it and console.log the
+  //              updated Movement as JSON; otherwise, console.log "Not Found" and exit.
+  // Failure -> Console.error
+  Movement.findByIdAndUpdate(id, {field: value})
+    .then((movement) => {
+      movement === null ? console.log('Not Found') : console.log(movement)
+    })
+    .catch(console.error);
+};
+
+const destroy = (id) => {
+  // Success -> If the specified Movement exists, destroy it and console.log 'removed';
+  //              otherwise, console.log "Not Found" and exit.
+  // Failure -> Console.error
+  Movement.findByIdAndRemove(id)
+  .then((movement) => {
+    movement === null ? console.log('Not Found') : console.log('Removed')
+  })
+  .catch(console.error);
+};
 
 module.exports = {
   create,
